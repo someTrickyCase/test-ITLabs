@@ -2,20 +2,101 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+:root {
+    --background: #ffffff;
+    --foreground: #4e3000;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    @apply min-w-[1440px] flex justify-center;
+}
+
+.main_container {
+    @apply w-full flex justify-center;
+}
+
+.section {
+    @apply flex w-full flex-col px-12 py-6;
+}
+
+.header {
+    @apply w-full h-20 border border-white;
+}
+
+.logo_img {
+    @apply h-full w-40;
+}
+
+.search_input {
+    @apply outline-none shadow-sm shadow-black/[0.1] h-12 w-[18rem] px-4 placeholder:text-[16px] placeholder:font-[400] placeholder:text-placeholder-gray rounded-lg;
+}
+
+.button {
+    font-family: var(--font-roboto);
+    @apply bg-primary-green w-72 h-12 flex items-center justify-center text-white text-2xl font-[400] rounded-lg active:!bg-primary-green;
+}
+
+.button:hover {
+    @apply bg-secondary-green duration-300;
+}
+
+.heading {
+    @apply text-brown font-[700] text-3xl;
+}
+
+.sub-heading {
+    @apply text-brown font-[600] text-3xl;
+}
+
+.popup {
+    @apply h-screen w-screen flex items-center justify-center bg-black/[0.4] absolute top-0 left-0;
+}
+
+.select_group {
+    @apply outline-none shadow-sm bg-white shadow-black/[0.1] h-12 w-[18rem] px-4 placeholder:text-[16px] placeholder:font-[400] placeholder:text-placeholder-gray rounded-lg text-placeholder-gray font-[400] text-xl;
+}
+
+.lead_table {
+    @apply w-full flex flex-col mt-5;
+}
+
+.table_row {
+    @apply w-full flex items-center justify-between;
+}
+
+.table_cell {
+    @apply w-40 flex items-center justify-start h-16 text-3xl font-[400];
+}
+
+.table_cell:nth-child(2) {
+    @apply w-72;
+}
+
+.table_cell:nth-child(1) {
+    @apply w-10;
+}
+
+.presence_bubble {
+    @apply h-12 w-12 rounded-full;
+}
+
+.footer {
+    @apply w-full flex items-center justify-between;
+}
+
+.option_selector {
+    @apply text-lg cursor-pointer px-2 py-1 rounded-xl outline-gray outline-[1px] hover:outline transition-all duration-300;
+}
+
+.selected {
+    @apply text-white bg-placeholder-gray;
 }
