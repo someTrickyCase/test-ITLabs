@@ -1,10 +1,12 @@
 "use client";
 
 import { leadStore } from "@/store/store";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const FiltersSelector = () => {
-    const [filterOptions, setFilterOptions] = useState("unfiltered");
+    const [filterOptions, setFilterOptions] = useState<"absent" | "present" | "unfiltered">(
+        "unfiltered"
+    );
     const { filterByPresence } = leadStore();
 
     const options: { action: "absent" | "present" | "unfiltered"; title: string }[] = [
@@ -12,6 +14,10 @@ const FiltersSelector = () => {
         { action: "present", title: "Присутствующим" },
         { action: "unfiltered", title: "Без фильтра" },
     ];
+
+    useEffect(() => {
+        filterByPresence(filterOptions);
+    }, [filterOptions, filterByPresence]);
 
     function handleSelectors(action: "absent" | "present" | "unfiltered") {
         setFilterOptions(action);

@@ -19,7 +19,7 @@ const LeadTable = () => {
 
     function generateGroupText(identifier: string) {
         switch (identifier) {
-            case "passeby":
+            case "passerby":
                 return "Прохожий";
             case "partner":
                 return "Партнер";
